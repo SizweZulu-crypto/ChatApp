@@ -167,13 +167,17 @@ public class Message {
                         String text = scan.nextLine();
  
                         m = new Message(recipient, text);
-                        String cellCheck = m.checkRecipientCell();
+                        boolean cellOk = m.checkRecipientCell(recipient);
                         String lengthCheck = m.checkMessageLength();
-                        System.out.println(cellCheck);
+ 
+                        if (cellOk) {
+                            System.out.println("Cell phone number successfully captured.");
+                        } else {
+                            System.out.println("Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.");
+                        }
                         System.out.println(lengthCheck);
  
-                        valid = cellCheck.equals("Cell phone number successfully captured.")
-                                && lengthCheck.equals("Message ready to send.");
+                        valid = cellOk && lengthCheck.equals("Message ready to send.");
                     } while (!valid);
  
                     System.out.println("Message ID generated: " + m.messageID);
