@@ -33,15 +33,18 @@ public class ChatApp1 {
             boolean loginSuccess = test.loginUser();
             String loginMessage = test.returnLoginMessage(loginSuccess);
             System.out.println(loginMessage);
+
+            if(loginSuccess){
+                Message.quickChat();
             }
-        else if(choose == 3){
+            }
+        else {
             System.out.println("Thank you for using ChatApp. Goodbye!");
             break;
             }
-        else{
-            System.out.println("Invalid option, please choose 1,2 or 3"); 
-            }
+        }
         }
     }
-}
+
+
  
